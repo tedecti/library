@@ -12,12 +12,6 @@ class Author extends Model
 
     protected $fillable = [
         'fio',
-        'book_id',
     ];
-
-    public function book()
-    {
-        return $this->belongsTo(Book::class, 'book_id');
-    }
     public $timestamps = false;
 }
