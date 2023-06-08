@@ -26,5 +26,5 @@ class Book extends Model
     {
         return $this->belongsToMany(Category::class, 'category_id');
     }
-    public $timestamps = false;
+    public $timestamps = true;
 }

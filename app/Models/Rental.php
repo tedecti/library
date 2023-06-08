@@ -26,5 +26,5 @@ class Rental extends Model
     {
         return $this->belongsToMany(User::class, 'user_id');
     }
-    public $timestamps = false;
+    public $timestamps = true;
 }

@@ -13,5 +13,5 @@ class Author extends Model
     protected $fillable = [
         'fio',
     ];
-    public $timestamps = false;
+    public $timestamps = true;
 }
