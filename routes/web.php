@@ -25,3 +25,5 @@ Route::get('/signin', [UserController::class, 'showLoginForm']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/books', [BookController::class, 'search'])->name('search');
+Route::get('/books/create', [BookController::class, 'showCreate']);
+Route::post('/books/create', [BookController::class, 'create'])->name('create');

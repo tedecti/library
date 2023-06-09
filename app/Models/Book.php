@@ -24,7 +24,7 @@ class Book extends Model
     }
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
     public $timestamps = true;
 }

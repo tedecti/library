@@ -26,15 +26,25 @@
                     <input name="query" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                 </div>
                 <div class="flex items-center justify-center sm:col-span-2">
-                    <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Send</button>
+                    <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Найти</button>
                 </div>
+                <p>Список книг:</p>
             </form>
-            <!-- form - end -->
         </div>
     </div>
     <div class="flex items-center justify-center gap-3">
         @foreach($books as $book)
-        <p>{{ $book->name }}</p>
+        <div class="flex flex-col border-2">
+            <div class="p-3">
+                <b>
+                    <p>{{ $book->book_name }}</p>
+                </b>
+                <p>Автор: {{ $book->fio }}</p>
+                <p>Жанр: {{ $book->category_name }}</p>
+                <p>Год издания: {{ $book->year_of_issue }}</p>
+                <p>ISBN: {{ $book->isbn }}</p>
+            </div>
+        </div>
         @endforeach
     </div>
 </body>
