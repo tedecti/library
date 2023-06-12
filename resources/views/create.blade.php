@@ -44,6 +44,10 @@
                         <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Год создания</label>
                         <input type="number" name="year_of_issue" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Год создания..." required="">
                     </div>
+                    <div>
+                        <label for="item-weight" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Количество книг</label>
+                        <input type="number" name="availability" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Кол-во книг..." required="">
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button type="submit" class="text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

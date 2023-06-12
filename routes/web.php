@@ -21,8 +21,10 @@ Route::get('/', [UserController::class, 'index']);
 Route::get('/signup', [UserController::class, 'showRegistrationForm']);
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/signin', [UserController::class, 'showLoginForm']);
+Route::get('/signin', [UserController::class, 'showLoginForm'])->name('signin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/books', [BookController::class, 'search'])->name('search');
 Route::get('/books/create', [BookController::class, 'showCreate']);

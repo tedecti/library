@@ -16,6 +16,7 @@ class Book extends Model
         'category_id',
         'year_of_issue',
         'isbn',
+        'availability',
     ];
 
     public function author()

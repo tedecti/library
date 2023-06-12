@@ -6,6 +6,7 @@ use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
+use App\Providers\BookService;
 use App\Repositories\BookRepository;
 use App\Repositories\Interfaces\BookRepositoryInterface;
 use Illuminate\Http\Request;
@@ -13,15 +14,17 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     private $bookRepository;
+    private $bookService;
 
-    public function __construct(BookRepository $bookRepository)
+    public function __construct(BookRepository $bookRepository, BookService $bookService)
     {
         $this->bookRepository = $bookRepository;
+        $this->bookService = $bookService;
     }
 
     public function search(Request $request)
     {
-        $books = $this->bookRepository->search($request);
+        $books = $this->bookRepository->get($request);
         return view('books', compact('books'));
     }
 
@@ -32,10 +35,9 @@ class BookController extends Controller
         return view('create', compact('authors', 'categories'));
     }
 
-    public function create(BookRequest $bookRequest)
+    public function create(BookRequest $request)
     {
-        $data = $bookRequest->validated();
-        Book::create($data);
+        $this->bookService->create($request);
         return redirect('/');
     }
 }

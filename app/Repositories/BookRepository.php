@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class BookRepository implements BookRepositoryInterface
 {
-    public function search(Request $request)
+    public function get(Request $request)
     {
         $query = $request->input('query');
         $searchTerm = $request->input('query');
@@ -26,12 +26,5 @@ class BookRepository implements BookRepositoryInterface
             ->get();
 
         return $books;
-    }
-
-    public function create(BookRequest $request)
-    {
-        $data = $request->validated();
-        Book::create($data);
-        return redirect(route('books'));
-    }
+        }
 }

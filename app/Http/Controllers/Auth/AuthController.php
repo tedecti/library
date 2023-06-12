@@ -3,47 +3,46 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthRequest;
 use App\Models\User;
+use App\Providers\AuthService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Ui\Presets\React;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
-    {
-            $request->validate([
-                'fio' => 'required|string|max:255',
-                'email' => 'required|string|max:255|unique:users',
-                'password' => 'required|string|min:3',
-            ]);
+    private $authService;
 
-            $user = User::create([
-                'fio' => $request->fio,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ]);
-            return redirect('/');
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
+    public function register(AuthRequest $request)
+    {
+        $this->authService->register($request);
+        return redirect('/');
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
+        $credentials = $this->authService->login($request);
         if (auth('user')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect(route('/'));
+            return redirect('/');
         }
-        
         return back()
             ->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])
             ->withInput(['email']);
-            redirect('/');
+    }
+
+    public function logout(Request $request)
+    {
+        $this->authService->logout($request);
+        return redirect('/');
     }
 }

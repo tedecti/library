@@ -7,6 +7,5 @@ use Illuminate\Http\Request;
 
 interface BookRepositoryInterface
 {
-    public function search(Request $request);
-    public function create(BookRequest $request);
+    public function get(Request $request);
 }
