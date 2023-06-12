@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->bigInteger('isbn');
             $table->year('year_of_issue');
+            $table->integer('availability');
             $table->timestamps();
             $table->softDeletes();
         });

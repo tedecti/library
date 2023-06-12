@@ -26,5 +26,13 @@ class DatabaseSeeder extends Seeder
             'role' => ('1'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
+
+        DB::table('authors')->insert([
+            'fio' => 'Джоан Роулинг',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Фантастика',
+        ]);
     }
 }

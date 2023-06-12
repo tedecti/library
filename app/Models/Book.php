@@ -16,6 +16,7 @@ class Book extends Model
         'category_id',
         'year_of_issue',
         'isbn',
+        'availability',
     ];
 
     public function author()
@@ -24,7 +25,7 @@ class Book extends Model
     }
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
     public $timestamps = true;
 }
