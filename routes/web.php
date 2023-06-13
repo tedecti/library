@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,7 @@ Route::get('/books/create', [BookController::class, 'showCreate']);
 Route::post('/books/create', [BookController::class, 'create'])->name('create');
 
 Route::get('/admin/index', [AdminController::class, 'index'])->name('index');
-Route::delete('/admin/index', [AdminController::class, 'destroy'])->name('destroy');
+
+Route::delete('/admin/index/{id}', [AdminController::class, 'destroy'])->name('destroy');
+
+Route::get('/booking', [BookingController::class, 'index'])->name('index');

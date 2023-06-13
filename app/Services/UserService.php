@@ -6,9 +6,9 @@ use App\Models\User;
 
 class UserService
 {
-    public function destroy(User $user)
+    public function destroy(string $id)
     {
+        $user = User::find($id);
         $user->delete();
-        return redirect(route('index'));
     }
 }

@@ -30,8 +30,8 @@ class AdminController extends Controller
         }
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $this->userService->destroy($user);
+        $this->userService->destroy($id);
     }
 }
