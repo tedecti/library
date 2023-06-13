@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Services;
 
 use App\Http\Requests\AuthRequest;
 use App\Models\User;
@@ -16,7 +16,7 @@ class AuthService
     {
         $data = $request->validated();
         DB::transaction(function () use ($data) {
-            $user = User::create([
+            User::create([
                 'fio' => $data["fio"],
                 'email' => $data["email"],
                 'password' => Hash::make($data["password"]),
@@ -38,4 +38,5 @@ class AuthService
     {
         $request->session()->invalidate();
     }
+
 }

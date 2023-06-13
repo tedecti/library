@@ -18,9 +18,9 @@ class User extends Authenticatable
         'password',
         'role_id'
     ];
-    // protected $attributes = [
-    //     'role_id' => 1,
-    // ];
+    protected $attributes = [
+        'role_id' => 1,
+    ];
 
     public $timestamps = true;
 

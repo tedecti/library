@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\AuthService;
 use Illuminate\Support\ServiceProvider;
 
 

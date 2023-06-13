@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('123123'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'role_id' => 1,
+            'role_id' => 2,
         ]);
 
 
