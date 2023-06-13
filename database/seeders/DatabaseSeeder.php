@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Role;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,13 +21,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('roles')->insert([
+            'name' => 'Пользователь',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Администратор',
+        ]);
+
+        User::create([
             'fio' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('123123'),
-            'role' => ('1'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'role_id' => 2,
         ]);
+
 
         DB::table('authors')->insert([
             'fio' => 'Джоан Роулинг',
@@ -34,5 +45,6 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
             'name' => 'Фантастика',
         ]);
+
     }
 }

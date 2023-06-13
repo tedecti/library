@@ -16,11 +16,16 @@ class User extends Authenticatable
         'fio',
         'email',
         'password',
-        'role',
+        'role_id'
     ];
     protected $attributes = [
-        'role' => 0,
+        'role_id' => 1,
     ];
 
     public $timestamps = true;
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'role_id');
+    }
 }

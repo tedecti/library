@@ -22,6 +22,8 @@ return [
             'driver' => 'session',
             'provider' => 'admins'
         ],
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -49,6 +51,10 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins'
+        ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
     ],
 
