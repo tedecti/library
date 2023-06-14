@@ -13,10 +13,10 @@
     <div class="flex justify-center items-center mt-20">
         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                Книга для бронирования
+                Книга для аренды
             </label>
             <div class="relative">
-                <form method="post" action="{{ route('booking') }}">
+                <form method="post" action="{{ route('rental') }}">
                     @csrf
                     @method('POST')
                     <select name="book_id" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
@@ -24,8 +24,12 @@
                         <option value="{{ $book->id }}">{{ $book->name }}</option>
                         @endforeach
                     </select>
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="return">
+                        Дата аренды
+                    </label>
+                    <input type="date" name="return" id="return">
                     <button type="submit" class="mt-5 text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Забронировать книгу
+                        Арендовать книгу
                     </button>
                 </form>
                 <div class="mb-20 mt-5 pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('book_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->tinyInteger('price');
-            $table->dateTime('return');
-            $table->softDeletes();
+            $table->date('return_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,7 +13,6 @@ class Rental extends Model
         'fio',
         'user_id',
         'book_id',
-        'rental_date',
         'return_date',
     ];
 

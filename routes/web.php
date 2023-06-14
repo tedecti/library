@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,15 +30,17 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/books', [BookController::class, 'search'])->name('search');
-Route::get('/books/create', [BookController::class, 'showCreate']);
-Route::post('/books/create', [BookController::class, 'create'])->name('create');
-Route::group(['middleware' => 'admin'], function () {
-    Route::get('/admin/index', [AdminController::class, 'index'])->name('index');
-});
+
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/booking', [BookingController::class, 'index'])->name('index');
+    Route::get('/booking', [BookingController::class, 'index']);
+    Route::post('/booking', [BookingController::class, 'create'])->name('booking');
+    Route::get('/rental', [RentalController::class, 'index']);
+    Route::post('/rental', [RentalController::class, 'create'])->name('rental');
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/books/create', [BookController::class, 'showCreate']);
+        Route::post('/books/create', [BookController::class, 'create'])->name('create');
+        Route::get('/admin/index', [AdminController::class, 'index']);
+        Route::delete('/admin/index/{id}', [AdminController::class, 'destroy'])->name('destroy');
+    });
 });
-
-
-Route::delete('/admin/index/{id}', [AdminController::class, 'destroy'])->name('destroy');
