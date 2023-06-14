@@ -9,6 +9,6 @@ class BookingController extends Controller
     public function index()
     {
        $books = Book::all();
-       return view('booking.index');
+       return view('booking.index', compact('books'));
     }
 }

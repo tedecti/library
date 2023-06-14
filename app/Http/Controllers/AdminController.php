@@ -21,14 +21,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        $user = Auth::guard('user')->user();
-        if ($user['role_id'] == 2) {
-            $get = $this->userRepository->get();
-            return view('admin.index', compact('get'));
-        } else {
-            return redirect()->back()->with('error', 'У вас нет доступа к этой странице');
-        }
-    }
+        $get = $this->userRepository->get();
+        return view('admin.index', compact('get'));
+    } 
 
     public function destroy($id)
     {

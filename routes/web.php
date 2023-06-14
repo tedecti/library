@@ -31,9 +31,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/books', [BookController::class, 'search'])->name('search');
 Route::get('/books/create', [BookController::class, 'showCreate']);
 Route::post('/books/create', [BookController::class, 'create'])->name('create');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin/index', [AdminController::class, 'index'])->name('index');
+});
 
-Route::get('/admin/index', [AdminController::class, 'index'])->name('index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/booking', [BookingController::class, 'index'])->name('index');
+});
+
 
 Route::delete('/admin/index/{id}', [AdminController::class, 'destroy'])->name('destroy');
-
-Route::get('/booking', [BookingController::class, 'index'])->name('index');
