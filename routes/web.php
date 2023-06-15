@@ -33,7 +33,7 @@ Route::get('/books', [BookController::class, 'search'])->name('search');
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/booking', [BookingController::class, 'index']);
+    Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
     Route::post('/booking', [BookingController::class, 'create'])->name('booking');
     Route::get('/rental', [RentalController::class, 'index']);
     Route::post('/rental', [RentalController::class, 'create'])->name('rental');

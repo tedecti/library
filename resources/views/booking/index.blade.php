@@ -24,6 +24,12 @@
                         <option value="{{ $book->id }}">{{ $book->name }}</option>
                         @endforeach
                     </select>
+                    @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+
                     <button type="submit" class="mt-5 text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         Забронировать книгу
                     </button>

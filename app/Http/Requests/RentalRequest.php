@@ -25,7 +25,7 @@ class RentalRequest extends FormRequest
     {
         return [
             'book_id' => ['required','exists:books,id'],
-            'return' => ['required', 'date'],
+            'return_date' => ['required', 'date'],
         ];
     }
 }

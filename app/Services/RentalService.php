@@ -19,10 +19,10 @@ class RentalService
             Rental::create([
                 'book_id' => $data['book_id'],
                 'user_id' => $user->id,
-                'return' => $data['return']
+                'return_date' => $data['return_date']
             ]);
         } else {
-            return 'Книга уже забронирована или арендована';
+            return redirect('/');
         }
-    }
+    } 
 }
