@@ -13,9 +13,11 @@ class BookingService
 {
     public function create(BookingRequest $request, array $data, User $user)
     {
-        Booking::create([
-            'book_id' => $data['book_id'],
-            'user_id' => $user->id,
-        ]);
+        DB::transaction(function () use ($data, $user) {
+            Booking::create([
+                'book_id' => $data['book_id'],
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

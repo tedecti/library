@@ -33,7 +33,7 @@ class BookingController extends Controller
         
         if (!$existingBooking && !$existingRental) {
             $this->bookingService->create($request, $data, auth('user')->user());
-            return redirect(route('search'))->with('message', $message);
+            return redirect(route('search'));
         } else {
             return redirect('booking')->with('message', $message);
         }
